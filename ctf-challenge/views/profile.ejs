@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overchain - Profile Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 700px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .username-display {
+            font-size: 1.8rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.2rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #9b59b6;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #9b59b6;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        button:hover {
+            background-color: #8e44ad;
+        }
+
+        .alert {
+            margin-top: 20px;
+            display: none;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .alert-success {
+            background-color: #2ecc71;
+        }
+
+        .alert-warning {
+            background-color: #e74c3c;
+        }
+
+        .table-container {
+            max-height: 300px; /* Maksimum yükseklik 5 satıra göre ayarlandı */
+            overflow-y: auto; /* Dikey kaydırma çubuğu */
+            margin-top: 20px; /* Üstten boşluk */
+            border: 1px solid #ddd; /* Tablo kenarlığı */
+            border-radius: 5px; /* Kenar yuvarlama */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 1.2rem;
+        }
+
+        th {
+            background-color: #9b59b6;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ToDo Button Styles */
+        .btn-todo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6e7ff3, #4c56d2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px; /* Yuvarlatılmış köşeler */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+        }
+
+        .btn-todo:hover {
+            background: linear-gradient(135deg, #ff4081, #ff1744); /* Daha parlak renk */
+            transform: translateY(-3px); /* Yukarı doğru hareket */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+            color: #ffffff; /* Yazı rengi beyaz kalacak */
+            font-size: 18px; /* Yazı boyutunu artır */
+        }
+
+        .btn-todo:active {
+            transform: translateY(0); /* Tıklanıldığında geri döner */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Button Styles */
+        .btn-contact {
+            position: fixed;
+            top: 20px;
+            right: 120px; /* ToDo butonunun soluna yerleştirildi */
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px; /* Yuvarlatılmış köşeler */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); 
+            color: #ffffff; 
+            font-size: 18px; 
+        }
+
+        .btn-contact:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .btn-admin {
+            position: fixed;
+            top: 20px;
+            right: 240px; 
+            background: linear-gradient(135deg, #ff6b6b, #d63031);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px; 
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            background: linear-gradient(135deg, #ff4757, #c0392b); 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); 
+            color: #ffffff; 
+            font-size: 18px; 
+        }
+
+        .btn-admin:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .btn-home {
+    position: fixed;
+    top: 20px;
+    right: 350px;
+    background: linear-gradient(135deg, #ff3b3b, #e02727);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-home:hover {
+    background: linear-gradient(135deg, #ff1a1a, #cc1a1a);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.btn-home:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-mail {
+    position: fixed;
+    top: 20px;
+    right: 245px; 
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-mail:hover {
+    background: linear-gradient(135deg, #28d745, #218d38); /* Daha parlak yeşil */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.btn-mail:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Profile Page</h2>
+
+        <div class="username-display">Current Username: <strong id="current-username"><%=username%></strong></div>
+        <input type="text" id="new-username" placeholder="Enter new username">
+        <button onclick="changeUsername()">Change Username</button>
+
+        <div id="alert" class="alert">
+            <strong id="alert-title"></strong> <span id="alert-message"></span>
+        </div>
+
+        <div class="table-container">
+            <table class="todo-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Task</th>
+                    </tr>
+                </thead>
+                <tbody id="todo-list">
+                    <% if (todos && todos.length > 0) { %>
+                        
+                        <% todos.forEach((todo,index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td> 
+                                <td><%= todo %></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="2">No tasks available</td> 
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="/" class="btn-home">Home</a>
+
+    <a href="http://localhost:4000/panel" class="btn-mail">Mail</a>
+
+    <a href="/todo" class="btn-todo">ToDo</a>
+
+    <a href="/sendAdmin" class="btn-contact">Contact</a>
+
+
+    <% if(user.role==='admin') {%>
+        <a href="http://localhost:5000/admin" class="btn-admin">Admin</a>
+    <% } %>
+
+    <script>
+        function hideAlert() {
+            const alertBox = document.getElementById('alert');
+            alertBox.style.display = 'none';
+        }
+        function changeUsername() {
+            const newUsername = document.getElementById('new-username').value;
+
+            const alertBox = document.getElementById('alert');
+            if (newUsername.trim() !== "") {
+                fetch(`/changeUsername?newUsername=${newUsername}`, {
+                    method: 'GET'
+                })
+                .then(res => res.json())
+                .then(response => {
+                    let currentUsername = document.getElementById('current-username');
+
+                    const type = response.type;
+                    if(type!=='warning'){
+                        currentUsername.innerText = response.newUsername;
+                    }
+                    const message = response.message;
+
+                    alertBox.className = `alert alert-${type === 'warning' ? 'warning' : 'success'}`;
+                    document.getElementById('alert-title').textContent = type === 'warning' ? 'Warning!' : 'Success!';
+                    document.getElementById('alert-message').textContent = message;
+                    alertBox.style.display = 'block';
+                })
+            } else {
+                alertBox.className = 'alert alert-warning';
+                document.getElementById('alert-title').textContent = 'Warning!';
+                document.getElementById('alert-message').textContent = 'Please enter a valid username.';
+                alertBox.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>

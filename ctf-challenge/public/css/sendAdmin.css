@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #7b3271 0%, #2b0174 100%);
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 60px;
+    border-radius: 18px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+    width: 500px; /* Daha geniş */
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 18px;
+    font-size: 22px; /* Böyük şrift */
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 18px;
+    font-size: 24px; /* Böyük düymə */
+    background-color: #b40b0b;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #e65100;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #bf360c;
+    transform: translateY(0);
+}
+.button-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.btn-profile {
+    background: linear-gradient(135deg, #6e7ff3, #4c56d2);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-profile:hover {
+    background: linear-gradient(135deg, #ff4081, #ff1744);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-size: 18px;
+}
+.btn-home {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #e43003, #b30303);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-mail {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #2de902, #198301);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-mail:hover {
+    background: linear-gradient(135deg, #174b01, #012f00); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.btn-home:hover {
+    background: linear-gradient(135deg, #681300, #530d02); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+.btn-todo {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-todo:hover {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-size: 18px;
+}

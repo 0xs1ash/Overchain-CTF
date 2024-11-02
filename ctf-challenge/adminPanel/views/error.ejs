@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overchain - Error Page</title>
+    <style>
+        /* Genel sayfa yapısı */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1b1b1b, #2d2d2d);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Hata mesajı kutusu */
+        .error-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* Başlık stili */
+        .error-container h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #00bfff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Açıklama yazısı */
+        .error-container p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        /* Animasyon için stil */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Arka plan GIF */
+        .background-gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: url('https://i.pinimg.com/originals/f3/56/3e/f3563e945aa9c7c37dccacf53ba603a0.gif') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        /* Timer yazısı */
+        .countdown {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Daire animasyonu */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #00bfff;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 id="errMessage">Error Occurred!</h1>
+        <div class="spinner"></div>
+        <p id="errorDetail">Redirecting in <span id="countdown">5</span> seconds...</p>
+    </div>
+    <div class="background-gif"></div>
+
+    <script>
+        <% if (typeof redirectUrl !== 'undefined' && redirectUrl) { %>
+            const redirectUrl = "<%= redirectUrl %>";
+            const message = "<%= message %>";
+
+            const errMessage = document.getElementById('errMessage');
+            errMessage.innerText = message || 'Error Occurred!';
+            
+            let countdown = 5;
+            const countdownElement = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                countdown--;
+                countdownElement.innerText = countdown;
+                if (countdown === 0) {
+                    clearInterval(interval);
+                    window.location.href = redirectUrl;
+                }
+            }, 1000);
+        <% } else { %>
+            window.location="/"
+        <% } %>
+    </script>
+</body>
+</html>

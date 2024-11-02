@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src *; style-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'nonce-<%= nonce %>' https://cdn.jsdelivr.net;">
+    <title>Overchain - Mail Panel</title>
+    <link rel="stylesheet" href="/css/panel.css">
+</head>
+<body>
+    <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
+    <div class="mail-panel">
+        <button id="logout-button" class="logout-button">Logout</button> 
+        <div class="sidebar">
+            <div id="maillist" class="mail-list"></div>
+        </div>
+        <div class="mail-content">
+            <h2 id="mail-title">New Messages will appear here:</h2>
+            <div id="mail-body">
+                <p id="content"></p>
+                <p id="footer"></p>
+                <% if(typeof username !== 'undefined' && username){%>
+                    <b>Account: </b> <p id="account-name"><%- username %></p>
+                <%} %>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="todo-button" class="todo-button">
+        <p>ToDo</p>
+        <img src="https://cdn-icons-png.freepik.com/512/7692/7692809.png" alt="Todo Icon">
+    </div>
+
+    <script nonce="<%= nonce %>">
+        function showMailContent(mail,username) {
+
+            const titleElement = document.getElementById('mail-title');
+            const bodyElement = document.getElementById('mail-body');
+
+            const contentElement = document.getElementById('content');
+            const footerElement = document.getElementById('footer');
+
+            
+
+            titleElement.innerHTML = mail.title;
+            contentElement.innerHTML = mail.content;
+            footerElement.innerHTML = mail.footer;
+            }
+
+            window.onload = function () {
+            const mailListDiv = document.getElementById('maillist');
+            const csrf = document.getElementById('_csrf').value
+            fetch('http://localhost:4000/getMails', {
+                method: 'GET',
+                headers: {
+                    'CSRF-TOKEN': csrf
+                },
+            })
+                .then((res) => res.json())
+                .then((response) => {
+                    const mails = response.data;
+
+                    if (mails && mails.length > 0) {
+                        showMailContent(mails[0]);
+                        mails.forEach((item, index) => {
+                            const mailItemDiv = document.createElement('div');
+                            mailItemDiv.classList.add('mail-item');
+
+                            mailItemDiv.addEventListener('click', () => showMailContent(item));
+                            mailItemDiv.textContent = item.subject;
+
+                            const mailDateDiv = document.createElement('div');
+                            mailDateDiv.classList.add('mail-date');
+                            mailDateDiv.textContent = item.date;
+
+                            mailItemDiv.appendChild(mailDateDiv);
+                            mailListDiv.appendChild(mailItemDiv);
+                        });
+                    }
+
+                    
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            const logoutButton = document.getElementById('logout-button');
+            logoutButton.addEventListener('click', logout);
+
+            const todoButton = document.getElementById('todo-button');
+            todoButton.addEventListener('click', openTodoPanel);
+            };
+
+            function logout() {
+            window.location.href = 'http://localhost:4000/logout';
+            }
+
+            function openTodoPanel() {
+            window.location = 'http://localhost:3000/todo';
+}
+
+
+    </script>
+</body>
+</html>
