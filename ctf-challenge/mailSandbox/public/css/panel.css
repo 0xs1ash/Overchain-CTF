@@ -1,0 +1,188 @@
+/* Baza Stil */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e;
+}
+
+/* Mail Panel Dizaynı */
+.mail-panel {
+    display: flex;
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    background-color: #2b2b2b;
+}
+
+/* Sidebar və Mail Siyahısı */
+.sidebar {
+    width: 35%;
+    background-color: #1f1f1f;
+    border-right: 1px solid #00a2ff;
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* Boşluq azaldıldı */
+}
+
+.mail-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 100%;
+    gap: 10px; /* Mesajlar arasında boşluq */
+    padding-right: 10px; /* Scrollbar görünməsin deyə sağdan boşluq */
+}
+
+.mail-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.mail-list::-webkit-scrollbar-thumb {
+    background-color: #00a2ff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mail-list::-webkit-scrollbar-thumb:hover {
+    background-color: #008cff;
+}
+
+.mail-item {
+    background: linear-gradient(135deg, #007BFF, #00a2ff);
+    color: white;
+    padding: 15px; /* Daha yığcam padding */
+    border-radius: 5px;
+    font-size: 16px; /* Font ölçüsü bir az azaldıldı */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between; /* Tarix və mətn düzəldildi */
+    align-items: center;
+}
+
+.mail-item:hover {
+    background: linear-gradient(135deg, #0064d2, #008cff);
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mail-date {
+    font-size: 14px;
+    color: #dcdcdc;
+    margin-left: 10px;
+    white-space: nowrap; /* Tarixin üst-üstə düşməməsi üçün */
+}
+
+/* Mail Məzmun Bölməsi */
+.mail-content {
+    flex-grow: 4;
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.mail-content h2 {
+    font-size: 28px;
+    color: #00a2ff;
+}
+
+.mail-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #dcdcdc;
+}
+
+/* Reset Link Stil */
+.mail-content a {
+    font-size: 18px;
+    color: #00a2ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.mail-content a:hover {
+    color: #008cff;
+}
+
+/* Highlight Stil */
+.highlight {
+    background-color: #dfded9;
+    color: #333;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* Logout Button */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #e84118;
+}
+
+/* ToDo Button */
+.todo-button {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    width: 100px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.todo-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.todo-button img {
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+}
+
+
+#account-name {
+    display: inline-block; /* Satır içi blok olarak ayarlar */
+    margin-left: 10px; /* "Account:" ile araya boşluk ekler */
+    font-weight: bold; /* Kalın yazı tipi */
+    font-size: 1em; /* Yazı boyutunu büyütür */
+    color: #1177fd; /* Yazı rengini koyu gri yapar */
+    background-color: #383838; /* Arka plan rengi */
+    padding: 5px 10px; /* İç boşluk ekler */
+    border-radius: 5px; /* Köşeleri yuvarlar */
+}

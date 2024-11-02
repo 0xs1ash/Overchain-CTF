@@ -1,0 +1,52 @@
+version: '3'
+services:
+  overchain_app:
+    container_name: nodejs
+    build: ./ctf-challenge
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+      - "5000:5000"
+    depends_on:
+      - mongo_db
+    env_file:
+      - ./ctf-challenge/config/.env
+    networks:
+      - app-network
+    volumes:
+      - ./ctf-challenge/logs:/usr/src/app/logs
+
+
+  mongo_db:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: slash
+      MONGO_INITDB_ROOT_PASSWORD: SlaSh{CtF-at1}
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+      - ./mongod.conf:/etc/mongod.conf
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    command: --config /etc/mongod.conf
+    networks:
+      - app-network
+
+  admin_bot:
+    container_name: admin_bot
+    build: ./ctf-challenge
+    command: ["node", "bot/adminBot.js"]
+    depends_on:
+      - overchain_app
+      - mongo_db
+    networks:
+      - app-network
+
+volumes:
+  mongo_db:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,223 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+}
+
+.todo-container {
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.todo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #4CAF50;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    /* Butonlar arası boşluk */
+}
+
+.btn-custom {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    flex: 1;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #45a049;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-logout {
+    background-color: #dc3545;
+    text-decoration: none;
+    /* Alt xətt silinir */
+    color: white;
+    /* Yuxarıda daha yaxşı görünməsi üçün rəng */
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
+    /* Hover zamanı fon rəngi */
+    color: white;
+    /* Yazarın rəngini bəyaz saxlayır */
+}
+
+
+.btn-clear {
+    background-color: #ffc107;
+}
+
+.btn-clear:hover {
+    background-color: #e0a800;
+}
+
+.button-container {
+    position: fixed; /* Fixes the position */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    display: flex; /* Aligns buttons in a row */
+    gap: 10px; /* Space between buttons */
+}
+
+
+.btn-profile, .btn-contact {
+    margin-right: 10px; /* Butonlar arasında boşluk */
+}
+
+.btn-profile {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #6e7ff3, #4c56d2);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-profile:hover {
+    background: linear-gradient(135deg, #ff4081, #ff1744); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.btn-profile:active {
+    transform: translateY(0); /* Tıklanıldığında geri döner */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-contact {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-home {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #e43003, #b30303);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-mail {
+    position: relative; /* Pozisyonunu ayarlamak için */
+    background: linear-gradient(135deg, #2de902, #198301);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Yuvarlatılmış köşeler */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.btn-mail:hover {
+    background: linear-gradient(135deg, #174b01, #012f00); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.btn-home:hover {
+    background: linear-gradient(135deg, #681300, #530d02); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.btn-contact:hover {
+    background: linear-gradient(135deg, #d9f312, #d9e622); /* Daha parlak renk */
+    transform: translateY(-3px); /* Yukarı doğru hareket */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Daha belirgin gölge */
+    color: #ffffff; /* Yazı rengi beyaz kalacak */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.btn-contact:active {
+    transform: translateY(0); /* Tıklanıldığında geri döner */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    padding: 10px;
+    background: #f9f9f9;
+    margin: 5px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+li:hover {
+    background: #f1f1f1;
+}
