@@ -3,8 +3,8 @@ This CTF is designed to identify vulnerabilities through static code analysis, c
 ## Clone the Application
 ### First, clone the application to your machine:
 ```
-sudo git clone https://github.com/FakeScript0/lodashboard.git
-cd lodashboard
+sudo git clone https://github.com/0xs1ash/Overchain-CTF.git
+cd Overchain-CTF
 ```
 ### Docker 
 #### On Ubuntu:
