@@ -38,4 +38,4 @@ chmod +x restart.sh
 ./restart.sh
 ```
 ## Solution
-**Medium:** https://medium.com
+**Medium:** https://medium.com/@bedellinicat123/overchain-ctf-solution-0939f358f41b
