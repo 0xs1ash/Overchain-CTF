@@ -19,7 +19,7 @@
     "dompurify": "^3.1.7",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.21.0",
+    "express": "^4.21.2",
     "express-session": "^1.18.1",
     "html-entities": "^2.5.2",
     "mongoose": "^8.7.1",
